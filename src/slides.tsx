@@ -113,7 +113,7 @@ export function SlideCover() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center justify-center px-6 py-6 text-center my-auto"
+      className="relative z-10 mx-auto flex min-h-[70vh] w-full max-w-4xl flex-col items-center justify-center px-6 py-6 text-center"
     >
       <motion.div variants={item} className="mb-6 flex items-center gap-5 md:mb-8 md:gap-6">
         <motion.img
@@ -189,7 +189,7 @@ export function SlideAlasan() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="relative z-10 mx-auto flex w-full max-w-6xl flex-col px-6 py-6 md:px-12 my-auto"
+      className="relative z-10 mx-auto flex w-full max-w-6xl flex-col px-6 py-4 md:px-12"
     >
       <SectionTag>Prolog &amp; Seleksi</SectionTag>
       <motion.h2 variants={item} className="font-display mt-4 text-3xl font-extrabold text-[#2c3670] sm:text-4xl md:text-5xl">
@@ -261,7 +261,7 @@ function TimelineSlide({
       variants={container}
       initial="hidden"
       animate="show"
-      className="relative z-10 mx-auto flex w-full max-w-6xl flex-col px-6 py-6 md:px-12 my-auto"
+      className="relative z-10 mx-auto flex w-full max-w-6xl flex-col px-6 py-4 md:px-12"
     >
       <SectionTag>{tag}</SectionTag>
       <motion.h2 variants={item} className="font-display mt-4 text-3xl font-extrabold text-[#2c3670] sm:text-4xl md:text-5xl">
@@ -391,7 +391,7 @@ export function SlideGaleri() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="relative z-10 mx-auto flex w-full max-w-6xl flex-col px-6 py-6 md:px-12 my-auto"
+      className="relative z-10 mx-auto flex w-full max-w-6xl flex-col px-6 py-4 md:px-12"
     >
       <SectionTag>Dokumentasi Kegiatan</SectionTag>
       <motion.h2 variants={item} className="font-display mt-4 text-3xl font-extrabold text-[#2c3670] sm:text-4xl md:text-5xl">
@@ -450,7 +450,7 @@ export function SlideKesan() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="relative z-10 mx-auto flex w-full max-w-6xl flex-col px-6 py-6 md:px-12 my-auto"
+      className="relative z-10 mx-auto flex w-full max-w-6xl flex-col px-6 py-4 md:px-12"
     >
       <SectionTag>Refleksi Pengalaman</SectionTag>
       <motion.h2 variants={item} className="font-display mt-4 text-3xl font-extrabold text-[#2c3670] sm:text-4xl md:text-5xl">
@@ -522,7 +522,7 @@ export function SlideSkill() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="relative z-10 mx-auto flex w-full max-w-6xl flex-col px-6 py-6 md:px-12 my-auto"
+      className="relative z-10 mx-auto flex w-full max-w-6xl flex-col px-6 py-4 md:px-12"
     >
       <SectionTag>Kompetensi Teknis</SectionTag>
       <motion.h2 variants={item} className="font-display mt-4 text-3xl font-extrabold text-[#2c3670] sm:text-4xl md:text-5xl">
@@ -561,7 +561,7 @@ export function SlidePenutup() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center justify-center px-6 py-6 text-center my-auto"
+      className="relative z-10 mx-auto flex min-h-[70vh] w-full max-w-4xl flex-col items-center justify-center px-6 py-6 text-center"
     >
       <motion.div variants={item} className="mb-6 flex items-center gap-5">
         <img src="/assets/logo-afila.png" alt="Logo Afila" className="h-16 w-16 rounded-2xl bg-white object-contain p-2 card-glow" />

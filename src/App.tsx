@@ -450,7 +450,7 @@ export default function App() {
       </header>
 
       {/* Main Slide Presentation Area */}
-      <main className="fixed inset-0 flex flex-col overflow-x-hidden overflow-y-auto pb-16 pt-16 sm:pb-16 sm:pt-20">
+      <main className="fixed inset-0 overflow-x-hidden overflow-y-auto pb-24 pt-20">
         <AnimatePresence mode="wait" custom={direction} initial={false}>
           <motion.div
             key={index}
@@ -460,7 +460,7 @@ export default function App() {
             animate="center"
             exit="exit"
             transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-            className="relative my-auto flex min-h-full w-full flex-col items-center justify-center py-4"
+            className="relative flex min-h-full w-full flex-col items-center justify-start py-4"
           >
             <Decorations variant={currentSlide.deco} />
             <Current />
