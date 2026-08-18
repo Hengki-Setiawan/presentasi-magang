@@ -139,8 +139,8 @@ export function SlideCover() {
         Perjalanan <span className="shine">Magang</span> Saya di Afila
       </motion.h1>
 
-      <motion.p variants={item} className="mt-5 max-w-xl text-base text-[#35459c]/80 md:mt-6 md:text-xl">
-        13 minggu belajar, mengerjakan proyek nyata, dan memahami alur kerja di industri.
+      <motion.p variants={item} className="mt-5 max-w-2xl text-base leading-relaxed text-[#35459c]/80 md:mt-6 md:text-xl">
+        Refleksi 13 minggu belajar proses pengembangan perangkat lunak, mengerjakan proyek otomasi nyata, dan memahami alur kerja di lingkungan industri.
       </motion.p>
 
       <motion.div variants={item} className="mt-8 flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-[#35459c]/70 md:mt-10 md:gap-3 md:text-sm">
@@ -170,18 +170,18 @@ export function SlideAlasan() {
   const cards = [
     {
       icon: Users,
-      title: 'Ajakan Teman',
-      desc: 'Mendapat info dan ajakan dari teman kampus untuk mencoba kesempatan magang di Afila.',
+      title: 'Ajakan & Peluang Awal',
+      desc: 'Mendapat informasi dan ajakan dari teman kampus mengenai lowongan magang di Afila Media Karya, yang kemudian menjadi kesempatan berharga untuk belajar langsung di industri.',
     },
     {
       icon: FileCode2,
-      title: 'Tes Hari ke-1: SIAKAP',
-      desc: 'Mengerjakan prototype aplikasi web SIAKAP untuk menguji pemahaman dasar.',
+      title: 'Tes Hari ke-1: Prototype SIAKAP',
+      desc: 'Mendapat tantangan membuat prototype web statis tentang SIAKAP dalam batas waktu tertentu untuk menguji pemahaman dasar HTML, CSS, dan struktur layout.',
     },
     {
       icon: ClipboardCheck,
-      title: 'Tes Hari ke-2: Absen Azka',
-      desc: 'Membuat alur logika aplikasi absensi Azka untuk melihat kesiapan mengerjakan tugas nyata.',
+      title: 'Tes Hari ke-2: Logika Absen Azka',
+      desc: 'Melanjutkan ke studi kasus fungsional: merancang alur logika dan sistem absensi Azka untuk melihat kemampuan menyelesaikan masalah secara terstruktur.',
     },
   ]
   return (
@@ -195,8 +195,8 @@ export function SlideAlasan() {
       <motion.h2 variants={item} className="font-display mt-4 text-3xl font-extrabold text-[#2c3670] sm:text-4xl md:text-5xl">
         Bagaimana Saya <span className="text-[#e9a313]">Masuk?</span>
       </motion.h2>
-      <motion.p variants={item} className="mt-3 max-w-2xl text-base text-[#35459c]/75 md:text-lg">
-        Sebelum resmi magang, saya mengikuti tes teknis selama <b className="text-[#2c3670]">2 hari</b> untuk melihat kesiapan dasar.
+      <motion.p variants={item} className="mt-3 max-w-3xl text-base text-[#35459c]/75 md:text-lg">
+        Sebelum resmi memulai magang, saya melalui proses seleksi teknis selama <b className="text-[#2c3670]">2 hari</b> untuk menguji pemahaman logika, kecepatan adaptasi, dan kesiapan mengerjakan kebutuhan tim.
       </motion.p>
 
       <div className="mt-8 grid gap-4 md:grid-cols-3 md:gap-5">
@@ -218,13 +218,13 @@ export function SlideAlasan() {
         ))}
       </div>
 
-      <motion.div variants={item} className="mt-6 grid gap-4 md:grid-cols-[1.1fr_1fr]">
+      <motion.div variants={item} className="mt-6 grid gap-4 md:grid-cols-[1.2fr_1fr]">
         <div className="flex items-center gap-4 rounded-3xl border border-[#f5b93b]/40 bg-[#f5b93b]/15 p-5">
           <span className="shrink-0 rounded-2xl bg-white/90 p-3 shadow-sm">
             <Rocket className="h-7 w-7 text-[#e9a313]" />
           </span>
           <p className="text-sm font-semibold leading-relaxed text-[#2c3670]">
-            Setelah menyelesaikan kedua tes tersebut, saya resmi bergabung untuk program magang 13 minggu di Afila.
+            Setelah menyelesaikan kedua tugas tes dalam 2 hari, saya mendapatkan umpan balik positif dari mentor dan resmi diterima untuk mengikuti program magang selama 13 minggu.
           </p>
         </div>
         <MediaSlot id="slot-alasan-tes" kind="image" label="Foto / Screenshot hasil tes 2 hari" ratio="16/7" />
@@ -326,10 +326,10 @@ function TimelineSlide({
 
 export function SlideAwal() {
   const weeks: WeekItem[] = [
-    { week: 'M1', title: 'Orientasi & n8n', desc: 'Mengenal ritme kerja tim dan mulai mempelajari dasar automasi n8n.', icon: Users },
-    { week: 'M2', title: 'Perancangan King Ell', desc: 'Memahami kebutuhan proyek King Ell dan menyusun alur logikanya.', icon: Workflow },
-    { week: 'M3', title: 'Build & Pengujian', desc: 'Membangun workflow n8n dan menguji alur datanya secara bertahap.', icon: Wrench },
-    { week: 'M4', title: 'Koneksi ke Owner', desc: 'Menghubungkan webhook dan notifikasi sistem King Ell langsung ke owner bisnis.', icon: Network, highlight: true },
+    { week: 'M1', title: 'Orientasi & n8n', desc: 'Pengenalan lingkungan kerja, alur koordinasi tim, dan mempelajari konsep dasar otomasi n8n.', icon: Users },
+    { week: 'M2', title: 'Perancangan King Ell', desc: 'Menerima briefing proyek King Ell, menganalisis kebutuhan klien, dan menyusun blueprint alur data.', icon: Workflow },
+    { week: 'M3', title: 'Build & Pengujian', desc: 'Membangun logika workflow di n8n, menghubungkan integrasi data, dan melakukan uji coba berulang.', icon: Wrench },
+    { week: 'M4', title: 'Koneksi ke Owner', desc: 'Berhasil mengintegrasikan webhook notifikasi otomatis langsung ke owner bisnis secara lancar.', icon: Network, highlight: true },
   ]
   return (
     <TimelineSlide
@@ -337,7 +337,7 @@ export function SlideAwal() {
       title={<>Awal Magang — <span className="text-[#e9a313]">Fondasi &amp; Sistem Pertama</span></>}
       accent="bg-[#35459c]/10 text-[#35459c]"
       weeks={weeks}
-      note="Fokus bulan pertama: adaptasi tools baru dan menyelesaikan sistem King Ell."
+      note="Fokus bulan pertama: adaptasi dengan tools otomasi baru dan menyelesaikan sistem pertama hingga terhubung ke owner."
     />
   )
 }
@@ -346,19 +346,19 @@ export function SlideAwal() {
 
 export function SlideTengah() {
   const weeks: WeekItem[] = [
-    { week: 'M5', title: 'Rancang Gunaku AI', desc: 'Mulai merancang alur percakapan dan branching logic untuk chatbot rental.', icon: Bot },
-    { week: 'M6', title: 'Integrasi Fitur', desc: 'Menghubungkan Google Sheets, model AI Groq, dan Evolution API untuk WhatsApp.', icon: Database },
-    { week: 'M7', title: 'Fitur Lanjutan', desc: 'Menambahkan fitur broadcast merchant, alur pembayaran, dan pembatalan.', icon: MessageSquare },
-    { week: 'M8', title: 'Migrasi ke Supabase', desc: 'Pindah ke Supabase untuk menghindari limit, serta membagi workflow jadi 5 sub-flow.', icon: ArrowRightLeft, highlight: true },
-    { week: 'M9', title: 'Pindah ke Telegram', desc: 'Menghadapi kendala nomor WA yang terblokir, lalu memindahkan bot ke Telegram.', icon: Rocket },
+    { week: 'M5', title: 'Rancang Gunaku AI', desc: 'Merancang pohon alur percakapan dan branching logic untuk chatbot rental interaktif.', icon: Bot },
+    { week: 'M6', title: 'Integrasi Multi-Service', desc: 'Menghubungkan Google Sheets sebagai database awal, model AI Groq, dan Evolution API untuk WhatsApp.', icon: Database },
+    { week: 'M7', title: 'Fitur Operasional', desc: 'Membangun broadcast merchant, validasi pembayaran, alur pembatalan, dan penanganan edge-case.', icon: MessageSquare },
+    { week: 'M8', title: 'Migrasi ke Supabase', desc: 'Memindahkan database ke Supabase untuk stabilitas data, serta memecah 1 workflow besar menjadi 5 sub-workflow.', icon: ArrowRightLeft, highlight: true },
+    { week: 'M9', title: 'Pindah ke Telegram', desc: 'Menghadapi kendala nomor WA yang sempat terblokir, tim memutuskan memindahkan bot ke platform Telegram.', icon: Rocket },
   ]
   return (
     <TimelineSlide
       tag="Fase 02 · Minggu 5–9"
-      title={<>Pertengahan — <span className="text-[#e9a313]">Tantangan &amp; Penyelesaian</span></>}
+      title={<>Pertengahan — <span className="text-[#e9a313]">Tantangan &amp; Solusi Kendala</span></>}
       accent="bg-[#f5b93b]/25 text-[#2c3670]"
       weeks={weeks}
-      note="Fase penting: belajar optimasi database, membagi modul workflow, dan mencari alternatif platform."
+      note="Fase paling dinamis: belajar arsitektur modular, optimasi database, dan kesiapan beralih platform saat terjadi kendala teknis."
     />
   )
 }
@@ -367,10 +367,10 @@ export function SlideTengah() {
 
 export function SlideAkhir() {
   const weeks: WeekItem[] = [
-    { week: 'M10', title: 'Finalisasi Gunaku', desc: 'Testing menyeluruh, cek metrik dashboard, dan merapikan bot Gunaku di Telegram.', icon: Flag, highlight: true },
-    { week: 'M11', title: 'Rumah Keripik AI', desc: 'Inisiatif mandiri: membuat chatbot progressive identification untuk rekomendasi produk.', icon: Bot },
-    { week: 'M12', title: 'Navigasi Peta & Rute', desc: 'Menghubungkan rute kurir OSRM dan peta interaktif MapLibre ke backend.', icon: Map },
-    { week: 'M13', title: 'Eksplorasi Bot Baru', desc: 'Mulai menyusun rancangan automasi untuk operasional laundry karpet.', icon: ShoppingBag },
+    { week: 'M10', title: 'Finalisasi Gunaku AI', desc: 'Melakukan stress testing akhir, memantau dashboard metriks, dan merapikan bot Gunaku di Telegram.', icon: Flag, highlight: true },
+    { week: 'M11', title: 'Proyek Rumah Keripik', desc: 'Inisiatif mandiri: membangun chatbot web dengan konsep progressive identification untuk rekomendasi produk.', icon: Bot },
+    { week: 'M12', title: 'Navigasi Peta & Rute', desc: 'Menghubungkan rute kurir OSRM dan visualisasi peta interaktif MapLibre ke backend sistem.', icon: Map },
+    { week: 'M13', title: 'Eksplorasi Bot Laundry', desc: 'Mulai merancang arsitektur automasi baru untuk kebutuhan pencatatan dan operasional laundry karpet.', icon: ShoppingBag },
   ]
   return (
     <TimelineSlide
@@ -378,7 +378,7 @@ export function SlideAkhir() {
       title={<>Akhir Magang — <span className="text-[#e9a313]">Penyelesaian &amp; Proyek Mandiri</span></>}
       accent="bg-[#35459c]/10 text-[#35459c]"
       weeks={weeks}
-      note="Mulai terbiasa merancang dan mengerjakan alur sistem secara lebih mandiri."
+      note="Di akhir masa magang, rasa percaya diri meningkat untuk merancang alur logika dan menyelesaikan proyek secara mandiri."
     />
   )
 }
@@ -398,7 +398,7 @@ export function SlideGaleri() {
         Galeri <span className="text-[#e9a313]">&amp;</span> Dokumentasi
       </motion.h2>
       <motion.p variants={item} className="mt-2 text-sm text-[#35459c]/75 md:text-base">
-        Foto kegiatan bersama tim, tangkapan layar sistem, dan rekaman pengujian proyek.
+        Dokumentasi visual selama kegiatan magang: suasana kerja bersama tim, arsitektur alur n8n, dan tampilan sistem yang dikembangkan.
       </motion.p>
 
       <div className="mt-6 grid gap-4 md:grid-cols-3">
@@ -440,10 +440,10 @@ export function SlideGaleri() {
 
 export function SlideKesan() {
   const lessons = [
-    { icon: Search, text: 'Membiasakan Riset Mandiri' },
-    { icon: Heart, text: 'Menangani Masalah / Debugging' },
-    { icon: GraduationCap, text: 'Ketelitian dalam Mengolah Data' },
-    { icon: BrainCircuit, text: 'Memanfaatkan AI Secara Tepat' },
+    { icon: Search, text: 'Membiasakan Riset Mandiri (Membaca Dokumentasi)' },
+    { icon: Heart, text: 'Menangani Masalah & Debugging secara Terstruktur' },
+    { icon: GraduationCap, text: 'Ketelitian dalam Mengolah & Memvalidasi Format Data' },
+    { icon: BrainCircuit, text: 'Memanfaatkan AI sebagai Asisten Belajar yang Efektif' },
   ]
   return (
     <motion.div
@@ -468,7 +468,7 @@ export function SlideKesan() {
             dan harus siap disesuaikan saat ada kebutuhan baru.”
           </p>
           <p className="mt-4 text-sm leading-relaxed text-[#35459c]/80">
-            Perbedaan terbesar yang saya rasakan adalah pentingnya menjaga sistem agar tetap stabil dan mudah dirawat saat digunakan oleh pengguna nyata.
+            Perbedaan mendasar yang saya rasakan adalah pergeseran pola pikir: dari sekadar 'kode berjalan' menjadi 'kode yang stabil, terstruktur, dan mudah dirawat oleh tim'.
           </p>
         </motion.div>
 
@@ -490,7 +490,7 @@ export function SlideKesan() {
       </div>
 
       <motion.p variants={item} className="mt-6 max-w-3xl text-sm leading-relaxed text-[#35459c]/75">
-        Pengalaman yang sangat bermanfaat dalam mengasah pemahaman teknis dan cara menyelesaikan masalah secara terstruktur.
+        Pengalaman ini sangat bermanfaat dalam mengasah pemahaman teknis, kedisiplinan alur data, dan cara menyelesaikan masalah secara tenang dan sistematis.
       </motion.p>
     </motion.div>
   )
@@ -501,20 +501,20 @@ export function SlideKesan() {
 export function SlideSkill() {
   const skills = [
     { icon: Bot, label: 'Perancangan Alur Chatbot' },
-    { icon: Workflow, label: 'Workflow Automasi n8n' },
-    { icon: FileCode2, label: 'Transformasi Data JSON' },
-    { icon: Route, label: 'Progressive Identification' },
-    { icon: Database, label: 'Database Supabase & SQL' },
-    { icon: BrainCircuit, label: 'Integrasi AI (Groq & DeepSeek)' },
-    { icon: TestTube2, label: 'End-to-End Testing' },
-    { icon: Webhook, label: 'Webhook & Event Trigger' },
+    { icon: Workflow, label: 'Workflow Automasi n8n Lanjut' },
+    { icon: FileCode2, label: 'Transformasi & Manipulasi JSON' },
+    { icon: Route, label: 'Progressive Identification Logic' },
+    { icon: Database, label: 'Database Supabase & Query SQL' },
+    { icon: BrainCircuit, label: 'Integrasi Model AI (Groq & DeepSeek)' },
+    { icon: TestTube2, label: 'End-to-End Testing Sistem' },
+    { icon: Webhook, label: 'Webhook & Event-Driven Triggers' },
     { icon: MessageSquare, label: 'Integrasi Telegram Bot API' },
-    { icon: Bug, label: 'Analisis Log & Debugging' },
+    { icon: Bug, label: 'Analisis Log & Systematic Debugging' },
     { icon: LayoutGrid, label: 'Struktur Workflow Modular' },
-    { icon: Split, label: 'Pemisahan Sub-Workflow' },
-    { icon: Network, label: 'Routing & Fallback Logic' },
-    { icon: Route, label: 'Pembuatan Diagram Alur' },
-    { icon: Sparkles, label: 'Pengujian Model AI' },
+    { icon: Split, label: 'Pemisahan Sub-Workflow Terisolasi' },
+    { icon: Network, label: 'Smart Routing & Fallback Logic' },
+    { icon: Route, label: 'Pembuatan Diagram Alur & Blueprint' },
+    { icon: Sparkles, label: 'Benchmarking & Evaluasi Respon AI' },
   ]
   return (
     <motion.div
@@ -528,7 +528,7 @@ export function SlideSkill() {
         Hal yang Saya <span className="text-[#e9a313]">Pelajari &amp; Gunakan</span>
       </motion.h2>
       <motion.p variants={item} className="mt-2 text-sm text-[#35459c]/75 md:text-base">
-        Keahlian praktis yang sering diterapkan selama 13 minggu magang.
+        Rangkuman keterampilan teknis dan pemahaman konsep yang aktif diterapkan selama 13 minggu pengerjaan proyek.
       </motion.p>
 
       <div className="mt-7 flex flex-wrap gap-2.5 md:gap-3">
@@ -572,7 +572,7 @@ export function SlidePenutup() {
       </motion.h2>
 
       <motion.p variants={item} className="mt-5 max-w-2xl text-base leading-relaxed text-[#35459c]/80 md:text-lg">
-        Terima kasih kepada mentor, pembimbing, dan seluruh tim Afila Media Karya atas bimbingan, kesempatan, dan pengalaman yang diberikan selama program magang ini.
+        Terima kasih yang sebesar-besarnya kepada mentor, pembimbing lapangan, dan seluruh tim Afila Media Karya atas kesempatan, arahan, dan bimbingan yang sangat berharga selama 13 minggu ini.
       </motion.p>
 
       <motion.div variants={item} className="mt-7 flex flex-wrap items-center justify-center gap-3">
@@ -611,13 +611,13 @@ export const slideDeckData: SlideData[] = [
     component: SlideCover,
     deco: 0,
     keyPoints: [
-      'Sapa audiens dan perkenalkan diri.',
-      'Sebutkan program magang: Afila × Universitas Negeri Makassar.',
-      'Jelaskan garis besar: Perjalanan 13 minggu selama magang.',
+      'Sapa audiens dan perkenalkan diri secara santai dan sopan.',
+      'Sebutkan program magang: Afila Media Karya × Universitas Negeri Makassar.',
+      'Jelaskan garis besar: Refleksi 13 minggu proses magang dari adaptasi awal hingga pengerjaan proyek nyata.',
     ],
     notes: [
-      'Ucapkan salam dan terima kasih kepada mentor dan tim Afila.',
-      'Sampaikan bahwa presentasi ini merangkum proses seleksi, tahapan proyek mingguan, kendala yang dihadapi, dan pembelajaran yang didapat.',
+      'Ucapkan salam pembuka dan terima kasih kepada para mentor dan rekan tim atas kehadirannya.',
+      'Sampaikan bahwa presentasi ini merangkum alur seleksi, timeline mingguan, cara menangani kendala teknis di lapangan, dan pembelajaran berharga yang didapatkan.',
     ],
   },
   {
@@ -626,12 +626,12 @@ export const slideDeckData: SlideData[] = [
     component: SlideAlasan,
     deco: 1,
     keyPoints: [
-      'Awal mula bergabung melalui ajakan teman.',
+      'Awal mula info magang melalui ajakan teman kampus.',
       'Tes Hari ke-1: Pembuatan prototype web SIAKAP.',
       'Tes Hari ke-2: Pembuatan logika aplikasi Absen Azka.',
     ],
     notes: [
-      'Ceritakan proses tes 2 hari sebagai tahap awal sebelum resmi onboard.',
+      'Jelaskan bahwa tes 2 hari menjadi tahapan penting untuk menguji kesiapan teknis dan kecepatan adaptasi sebelum resmi onboard.',
     ],
   },
   {
@@ -640,13 +640,12 @@ export const slideDeckData: SlideData[] = [
     component: SlideAwal,
     deco: 2,
     keyPoints: [
-      'M1: Pengenalan alur kerja dan dasar automasi n8n.',
-      'M2-M3: Desain alur dan pembangunan sistem King Ell.',
-      'M4: Sistem pertama berhasil terhubung ke owner.',
+      'M1: Orientasi tim dan pemahaman dasar otomasi n8n.',
+      'M2-M3: Desain alur dan pembangunan workflow sistem King Ell.',
+      'M4: Sistem pertama berhasil terhubung ke akun owner.',
     ],
     notes: [
-      'Jelaskan proses adaptasi di bulan pertama saat membangun sistem King Ell.',
-      'Sampaikan pengalaman saat notifikasi webhook pertama kali terhubung ke owner bisnis.',
+      'Ceritakan proses belajar n8n dari nol dan kepuasan ketika sistem perdana King Ell berhasil mengirimkan notifikasi ke owner bisnis.',
     ],
   },
   {
@@ -655,13 +654,12 @@ export const slideDeckData: SlideData[] = [
     component: SlideTengah,
     deco: 0,
     keyPoints: [
-      'M5-M7: Pengembangan Gunaku AI chatbot rental dengan Groq & Evolution API.',
-      'M8: Migrasi ke Supabase dan membagi workflow menjadi 5 modul.',
+      'M5-M7: Pengembangan Gunaku AI (chatbot rental) dengan Groq & Evolution API.',
+      'M8: Migrasi database ke Supabase dan pemecahan workflow menjadi 5 modul.',
       'M9: Mengatasi nomor WhatsApp yang terblokir dengan memindahkan bot ke Telegram.',
     ],
     notes: [
-      'Ceritakan kendala nyata di lapangan saat nomor WA terblokir dan bagaimana solusi migrasi ke Telegram diterapkan.',
-      'Jelaskan manfaat pemecahan workflow agar alur sistem lebih rapi dan mudah di-debug.',
+      'Tekankan kendala nyata yang dihadapi saat nomor WA terkena ban dan langkah solutif memindahkan platform ke Telegram agar operasional tetap aman.',
     ],
   },
   {
@@ -670,12 +668,12 @@ export const slideDeckData: SlideData[] = [
     component: SlideAkhir,
     deco: 1,
     keyPoints: [
-      'M10: Finalisasi bot Gunaku AI di Telegram.',
-      'M11-M12: Proyek mandiri Rumah Keripik (rekomendasi produk + rute OSRM & MapLibre).',
-      'M13: Memulai rancangan automasi untuk usaha laundry karpet.',
+      'M10: Finalisasi dan testing menyeluruh bot Gunaku AI di Telegram.',
+      'M11-M12: Inisiatif proyek Rumah Keripik (rekomendasi produk + rute OSRM & MapLibre).',
+      'M13: Eksplorasi rancangan automasi baru untuk operasional laundry karpet.',
     ],
     notes: [
-      'Jelaskan perkembangan dari mengerjakan proyek tim hingga mencoba membuat inisiatif proyek mandiri.',
+      'Jelaskan transisi peningkatan kemampuan dari yang awalnya selalu diarahkan mentor hingga mampu membuat rancangan proyek secara mandiri.',
     ],
   },
   {
@@ -684,10 +682,10 @@ export const slideDeckData: SlideData[] = [
     component: SlideGaleri,
     deco: 2,
     keyPoints: [
-      'Menampilkan dokumentasi foto kerja, tangkapan layar sistem, dan rekaman pengujian.',
+      'Menampilkan dokumentasi visual: suasana kerja, screenshot node n8n, dan antarmuka bot.',
     ],
     notes: [
-      'Ajak audiens melihat bukti visual dan demo hasil pekerjaan yang telah diselesaikan.',
+      'Ajak audiens melihat bukti visual dan demo produk yang telah berhasil dibangun.',
     ],
   },
   {
@@ -696,11 +694,11 @@ export const slideDeckData: SlideData[] = [
     component: SlideKesan,
     deco: 0,
     keyPoints: [
-      'Perbedaan tugas kuliah vs merawat sistem yang digunakan orang nyata.',
-      'Peningkatan kemampuan riset mandiri, ketelitian data, dan penanganan error.',
+      'Pergeseran pola pikir: tugas kuliah (selesai dikumpul) vs sistem industri (harus terus stabil dan dirawat).',
+      'Peningkatan kemampuan riset mandiri, ketelitian format data, dan penanganan error secara terstruktur.',
     ],
     notes: [
-      'Ceritakan refleksi pribadi mengenai pentingnya menjaga stabilitas sistem di lingkungan kerja nyata.',
+      'Sampaikan refleksi pribadi yang paling berkesan mengenai tanggung jawab menjaga stabilitas sistem di dunia kerja.',
     ],
   },
   {
@@ -709,12 +707,12 @@ export const slideDeckData: SlideData[] = [
     component: SlideSkill,
     deco: 1,
     keyPoints: [
-      'Penguasaan logic n8n, webhook, dan pengolahan data JSON.',
-      'Integrasi database Supabase dan pemanfaatan model AI.',
-      'Analisis error dan pembuatan alur sistem modular.',
+      'Otomasi n8n, webhook, dan manipulasi format JSON.',
+      'Database Supabase, query SQL, dan integrasi multi-model AI.',
+      'Investigasi log error, modular sub-workflow, dan fallback routing.',
     ],
     notes: [
-      'Sebutkan skill dan pemahaman praktis yang didapat selama magang.',
+      'Rangkum kompetensi praktis yang menjadi bekal kuat untuk pengembangan karier ke depan.',
     ],
   },
   {
@@ -723,11 +721,11 @@ export const slideDeckData: SlideData[] = [
     component: SlidePenutup,
     deco: 2,
     keyPoints: [
-      'Menyampaikan apresiasi kepada mentor dan rekan tim.',
+      'Menyampaikan apresiasi tulus kepada mentor dan seluruh tim Afila.',
       'Membuka sesi tanya jawab (Q&A).',
     ],
     notes: [
-      'Tutup presentasi dengan sopan dan persilakan audiens untuk bertanya.',
+      'Tutup presentasi dengan santun dan persilakan mentor atau audiens memberikan tanggapan atau pertanyaan.',
     ],
   },
 ]
