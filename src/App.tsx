@@ -310,7 +310,7 @@ export default function App() {
       </div>
 
       {/* Top Header bar */}
-      <header className="absolute left-0 right-0 top-0 z-40 flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
+      <header className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between border-b border-[#35459c]/10 bg-[#fffdf4]/90 px-4 py-3 shadow-xs backdrop-blur-md sm:px-6 sm:py-3.5">
         {/* Brand & Logo */}
         <div
           className="flex cursor-pointer items-center gap-2.5 transition-transform hover:scale-105 sm:gap-3"
@@ -450,7 +450,7 @@ export default function App() {
       </header>
 
       {/* Main Slide Presentation Area */}
-      <main className="absolute inset-0 pt-14 sm:pt-16">
+      <main className="fixed inset-0 flex flex-col overflow-x-hidden overflow-y-auto pb-16 pt-16 sm:pb-16 sm:pt-20">
         <AnimatePresence mode="wait" custom={direction} initial={false}>
           <motion.div
             key={index}
@@ -460,7 +460,7 @@ export default function App() {
             animate="center"
             exit="exit"
             transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-            className="absolute inset-0"
+            className="relative my-auto flex min-h-full w-full flex-col items-center justify-center py-4"
           >
             <Decorations variant={currentSlide.deco} />
             <Current />
@@ -475,7 +475,7 @@ export default function App() {
           go(-1)
         }}
         disabled={index === 0}
-        className="absolute left-3 top-1/2 z-40 -translate-y-1/2 rounded-full border border-[#35459c]/20 bg-white/85 p-2.5 text-[#35459c] shadow-lg backdrop-blur transition hover:scale-110 hover:bg-[#f5b93b]/40 disabled:pointer-events-none disabled:opacity-0 sm:left-5 sm:p-3.5"
+        className="fixed left-3 top-1/2 z-40 -translate-y-1/2 rounded-full border border-[#35459c]/20 bg-white/90 p-2.5 text-[#35459c] shadow-lg backdrop-blur transition hover:scale-110 hover:bg-[#f5b93b]/40 disabled:pointer-events-none disabled:opacity-0 sm:left-5 sm:p-3.5"
         aria-label="Slide sebelumnya"
         title="Slide sebelumnya (←)"
       >
@@ -487,7 +487,7 @@ export default function App() {
           go(1)
         }}
         disabled={index === slideDeckData.length - 1}
-        className="absolute right-3 top-1/2 z-40 -translate-y-1/2 rounded-full border border-[#35459c]/20 bg-white/85 p-2.5 text-[#35459c] shadow-lg backdrop-blur transition hover:scale-110 hover:bg-[#f5b93b]/40 disabled:pointer-events-none disabled:opacity-0 sm:right-5 sm:p-3.5"
+        className="fixed right-3 top-1/2 z-40 -translate-y-1/2 rounded-full border border-[#35459c]/20 bg-white/90 p-2.5 text-[#35459c] shadow-lg backdrop-blur transition hover:scale-110 hover:bg-[#f5b93b]/40 disabled:pointer-events-none disabled:opacity-0 sm:right-5 sm:p-3.5"
         aria-label="Slide berikutnya"
         title="Slide berikutnya (→)"
       >
@@ -495,7 +495,7 @@ export default function App() {
       </button>
 
       {/* Bottom slide dots navigation */}
-      <div className="absolute bottom-4 left-1/2 z-40 flex -translate-x-1/2 items-center gap-1.5 sm:bottom-5 sm:gap-2">
+      <div className="fixed bottom-3 left-1/2 z-40 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-[#35459c]/15 bg-white/85 px-3 py-1.5 shadow-sm backdrop-blur sm:bottom-4 sm:gap-2">
         {slideDeckData.map((s, i) => (
           <button
             key={s.slug}
