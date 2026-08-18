@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, type Variants } from 'framer-motion'
 import {
   ChevronLeft,
   ChevronRight,
@@ -22,7 +22,7 @@ import { SpeakerNotesModal } from '@/components/SpeakerNotesModal'
 import { ShortcutsModal } from '@/components/ShortcutsModal'
 import { soundFX } from '@/lib/soundFx'
 
-const slideVariants = {
+const slideVariants: Variants = {
   enter: (dir: number) => ({
     opacity: 0,
     x: dir * 100,

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import {
   Sparkles,
   Users,
@@ -31,18 +31,18 @@ import { MediaSlot } from '@/components/MediaSlot'
 
 /* ---------------- shared motion ---------------- */
 
-export const container = {
+export const container: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.08, delayChildren: 0.12 } },
 }
 
-export const item = {
+export const item: Variants = {
   hidden: { opacity: 0, y: 30, filter: 'blur(5px)' },
   show: {
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
-    transition: { type: 'spring', stiffness: 120, damping: 18 },
+    transition: { type: 'spring' as const, stiffness: 120, damping: 18 },
   },
 }
 
