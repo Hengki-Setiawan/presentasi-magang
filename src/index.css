@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 45 100% 98%;
+    --foreground: 233 49% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 233 49% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 233 49% 20%;
+    --primary: 233 49% 36%;
+    --primary-foreground: 45 100% 97%;
+    --secondary: 42 95% 92%;
+    --secondary-foreground: 233 49% 25%;
+    --muted: 42 60% 94%;
+    --muted-foreground: 233 20% 45%;
+    --accent: 40 90% 56%;
+    --accent-foreground: 233 49% 20%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 40% 88%;
+    --input: 40 40% 88%;
+    --ring: 233 49% 36%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html, body, #root {
+    height: 100%;
+    overflow: hidden;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.font-display {
+  font-family: 'Sora', system-ui, sans-serif;
+}
+
+/* ---------- Deck decorations ---------- */
+.bg-cream {
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(245, 185, 59, 0.22), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(53, 69, 156, 0.14), transparent 60%),
+    linear-gradient(180deg, #fffdf4 0%, #fff9e8 100%);
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(53, 69, 156, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(53, 69, 156, 0.055) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 30%, transparent 75%);
+}
+
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+.text-stroke-navy {
+  -webkit-text-stroke: 1.5px rgba(53, 69, 156, 0.35);
+  color: transparent;
+}
+
+.shine {
+  background: linear-gradient(110deg, #35459c 20%, #f5b93b 45%, #35459c 70%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine-move 6s linear infinite;
+}
+@keyframes shine-move {
+  to { background-position: 200% center; }
+}
+
+.card-glow {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 12px 32px -12px rgba(53, 69, 156, 0.25),
+    0 4px 12px -4px rgba(245, 185, 59, 0.25);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 26s linear infinite;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+::selection {
+  background: rgba(245, 185, 59, 0.5);
+}
+
+/* Custom smooth scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(53, 69, 156, 0.05);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(53, 69, 156, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 185, 59, 0.6);
+}
+
+/* Print styles for exporting clean slide PDF */
+@media print {
+  body, html, #root {
+    height: auto !important;
+    overflow: visible !important;
+    background: #fffdf4 !important;
+  }
+  header, button, .pointer-events-none {
+    display: none !important;
+  }
+  main {
+    position: relative !important;
+    padding-top: 0 !important;
+  }
+}
