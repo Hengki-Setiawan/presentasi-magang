@@ -5,10 +5,16 @@ class SoundFX {
   private enabled: boolean = true
 
   constructor() {
-    // Load preference from localStorage
-    const saved = localStorage.getItem('afila_presentation_sound_muted')
-    if (saved !== null) {
-      this.enabled = saved !== 'true'
+    // Load preference from localStorage (guard SSR)
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        const saved = localStorage.getItem('afila_presentation_sound_muted')
+        if (saved !== null) {
+          this.enabled = saved !== 'true'
+        }
+      }
+    } catch {
+      // ignore - e.g. privacy mode blocks localStorage
     }
   }
 
@@ -30,7 +36,13 @@ class SoundFX {
 
   public toggleMute(): boolean {
     this.enabled = !this.enabled
-    localStorage.setItem('afila_presentation_sound_muted', (!this.enabled).toString())
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.setItem('afila_presentation_sound_muted', (!this.enabled).toString())
+      }
+    } catch {
+      // ignore
+    }
     if (this.enabled) {
       this.playTick()
     }

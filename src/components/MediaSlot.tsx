@@ -17,8 +17,9 @@ export function MediaSlot({ id, kind, label, className = '', ratio = '16/9' }: M
   const [dragOver, setDragOver] = useState(false)
   const [isZoomed, setIsZoomed] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const objectUrlRef = useRef<string | null>(null)
 
-  // Load from IndexedDB on mount
+  // Load from IndexedDB on mount - with proper URL cleanup
   useEffect(() => {
     let active = true
     if (!id) return
@@ -29,6 +30,7 @@ export function MediaSlot({ id, kind, label, className = '', ratio = '16/9' }: M
         if (!active) return
         if (stored?.file) {
           const url = URL.createObjectURL(stored.file)
+          objectUrlRef.current = url
           setSrc(url)
         }
       })
@@ -39,6 +41,11 @@ export function MediaSlot({ id, kind, label, className = '', ratio = '16/9' }: M
 
     return () => {
       active = false
+      // Cleanup object URL on unmount or id change
+      if (objectUrlRef.current) {
+        URL.revokeObjectURL(objectUrlRef.current)
+        objectUrlRef.current = null
+      }
     }
   }, [id])
 
@@ -55,8 +62,12 @@ export function MediaSlot({ id, kind, label, className = '', ratio = '16/9' }: M
         if (id) {
           await saveMediaToDB(id, file)
         }
-        if (src) URL.revokeObjectURL(src)
+        if (objectUrlRef.current) {
+          URL.revokeObjectURL(objectUrlRef.current)
+          objectUrlRef.current = null
+        }
         const url = URL.createObjectURL(file)
+        objectUrlRef.current = url
         setSrc(url)
         soundFX.playPop()
       } catch (err) {
@@ -65,22 +76,27 @@ export function MediaSlot({ id, kind, label, className = '', ratio = '16/9' }: M
         setLoading(false)
       }
     },
-    [id, kind, src],
+    [id, kind],
   )
 
   const handleDelete = useCallback(
     async (e: React.MouseEvent) => {
       e.stopPropagation()
-      if (src) {
-        URL.revokeObjectURL(src)
-        setSrc(null)
+      if (objectUrlRef.current) {
+        URL.revokeObjectURL(objectUrlRef.current)
+        objectUrlRef.current = null
       }
+      setSrc(null)
       if (id) {
-        await deleteMediaFromDB(id)
+        try {
+          await deleteMediaFromDB(id)
+        } catch (err) {
+          console.error('Failed to delete media:', err)
+        }
       }
       soundFX.playTick()
     },
-    [id, src],
+    [id],
   )
 
   return (

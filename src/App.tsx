@@ -61,7 +61,13 @@ export default function App() {
   const [overview, setOverview] = useState(false)
   const [showNotes, setShowNotes] = useState(false)
   const [showShortcuts, setShowShortcuts] = useState(false)
-  const [isMuted, setIsMuted] = useState(() => soundFX.isMuted())
+  const [isMuted, setIsMuted] = useState(() => {
+    try {
+      return soundFX.isMuted()
+    } catch {
+      return false
+    }
+  })
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [copiedLink, setCopiedLink] = useState(false)
 
@@ -78,13 +84,21 @@ export default function App() {
   const touchStartX = useRef<number | null>(null)
   const touchEndX = useRef<number | null>(null)
 
-  // Sync index to URL hash
-  const updateHash = useCallback((newIndex: number) => {
-    const slug = slideDeckData[newIndex]?.slug || `${newIndex + 1}`
-    if (window.location.hash !== `#${slug}`) {
-      window.history.replaceState(null, '', `#${slug}`)
-    }
-  }, [])
+  // Sync index to URL hash - pushState for proper Back/Forward navigation
+  const updateHash = useCallback(
+    (newIndex: number, opts: { replace?: boolean } = {}) => {
+      const slug = slideDeckData[newIndex]?.slug || `${newIndex + 1}`
+      if (window.location.hash !== `#${slug}`) {
+        const url = `#${slug}`
+        if (opts.replace) {
+          window.history.replaceState(null, '', url)
+        } else {
+          window.history.pushState(null, '', url)
+        }
+      }
+    },
+    [],
+  )
 
   const go = useCallback(
     (dir: number) => {
@@ -133,15 +147,27 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
-  // Presentation timer tick
+  // Presentation timer tick - pause when tab hidden
   useEffect(() => {
-    let interval: ReturnType<typeof setInterval>
-    if (isTimerRunning) {
+    let interval: ReturnType<typeof setInterval> | undefined
+    if (isTimerRunning && document.visibilityState === 'visible') {
       interval = setInterval(() => {
         setTimerSeconds((s) => s + 1)
       }, 1000)
     }
-    return () => clearInterval(interval)
+    const onVis = () => {
+      if (document.visibilityState === 'hidden' && interval) {
+        clearInterval(interval)
+        interval = undefined
+      } else if (document.visibilityState === 'visible' && isTimerRunning && !interval) {
+        interval = setInterval(() => setTimerSeconds((s) => s + 1), 1000)
+      }
+    }
+    document.addEventListener('visibilitychange', onVis)
+    return () => {
+      clearInterval(interval)
+      document.removeEventListener('visibilitychange', onVis)
+    }
   }, [isTimerRunning])
 
   // Auto-play timer
@@ -183,11 +209,15 @@ export default function App() {
     return () => document.removeEventListener('fullscreenchange', handleFsChange)
   }, [])
 
-  // Keyboard navigation
+  // Keyboard navigation - ignore when typing
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      // Don't trigger if user is typing in an input
-      if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) return
+      const target = e.target as HTMLElement
+      if (
+        ['INPUT', 'TEXTAREA', 'SELECT'].includes(target?.tagName) ||
+        target?.isContentEditable
+      )
+        return
 
       if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
         e.preventDefault()
@@ -254,12 +284,31 @@ export default function App() {
     setIsMuted(muted)
   }
 
-  const handleCopyLink = () => {
+  const handleCopyLink = async () => {
     const url = `${window.location.origin}${window.location.pathname}#${slideDeckData[index]?.slug || index + 1}`
-    navigator.clipboard.writeText(url)
-    soundFX.playPop()
-    setCopiedLink(true)
-    setTimeout(() => setCopiedLink(false), 2000)
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url)
+      } else {
+        // Fallback for older browsers
+        const ta = document.createElement('textarea')
+        ta.value = url
+        ta.style.position = 'fixed'
+        ta.style.opacity = '0'
+        document.body.appendChild(ta)
+        ta.select()
+        document.execCommand('copy')
+        document.body.removeChild(ta)
+      }
+      soundFX.playPop()
+      setCopiedLink(true)
+      setTimeout(() => setCopiedLink(false), 2000)
+    } catch (err) {
+      console.error('Copy failed:', err)
+      // Still show feedback - user can manually copy
+      setCopiedLink(true)
+      setTimeout(() => setCopiedLink(false), 2000)
+    }
   }
 
   // Touch Swipe handlers

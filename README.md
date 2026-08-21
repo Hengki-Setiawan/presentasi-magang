@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+# Perjalanan Magang di Afila — Afila Media Karya × UNM
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Presentasi interaktif 13 minggu magang: otomasi **n8n**, **Gunaku AI**, **Rumah Keripik**, dan pembelajaran industri. Dibangun sebagai web app slide deck modern (bukan PowerPoint statis).
 
-Currently, two official plugins are available:
+🔗 **Live:** https://presentasi-magang.vercel.app  
+📂 **Repo:** https://github.com/Hengki-Setiawan/presentasi-magang
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![cover](public/assets/logo-afila.png)
 
-## React Compiler
+## ✨ Fitur
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 9 slide data-driven (`src/slides.tsx:607`) - cover, seleksi, fase 1-3, galeri, kesan, skill, penutup
+- Navigasi keyboard (← → Home End Space), swipe touch, dots, overview grid (O), hash routing (`#cover`, `#fase-2`)
+- Speaker Notes + Timer (N), Auto-play 8s (P), Sound FX WebAudio (M), Fullscreen (F), Copy link (C), Shortcuts help (?/H)
+- MediaSlot drag&drop + IndexedDB persist (`src/components/MediaSlot.tsx:14`)
+- Animasi Framer Motion, tema navy `#35459c` + gold `#f5b93b` + cream `#fffdf4`, font Sora + Plus Jakarta Sans
+- SEO lengkap: OG/Twitter, sitemap, robots.txt, `lang="id"`
 
-## Expanding the ESLint configuration
+## 🛠️ Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Vite 6 + React 19 + TypeScript 5.7 + Tailwind 3.4 + Framer Motion 12 + lucide-react + IndexedDB
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Cara Jalan
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Node 20 (lihat .nvmrc)
+nvm use        # atau fnm use
+npm install
+npm run dev    # http://localhost:3000
+npm run build  # tsc -b + vite build
+npm run preview
+npm run typecheck
+npm run lint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 Struktur
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+  App.tsx              Shell: state index/direction, autoplay, timer, hash sync
+  slides.tsx           9 komponen slide + slideDeckData
+  components/
+    MediaSlot.tsx      Upload image/video -> IndexedDB
+    SpeakerNotesModal.tsx
+    ShortcutsModal.tsx
+  lib/
+    soundFx.ts         Web Audio synth (no mp3)
+    mediaStorage.ts    IndexedDB helper
+public/assets/         logo-afila.png, logo-unm.png
+vercel.json            headers immutable, SPA rewrites, security
+```
+
+## ⌨️ Shortcuts
+
+| Tombol | Aksi |
+|---|---|
+| → / Space / PgDn | Next |
+| ← / PgUp | Prev |
+| Home / End | First / Last |
+| O | Overview grid |
+| N | Speaker notes & timer |
+| P | Auto-play |
+| M | Mute SFX |
+| F | Fullscreen |
+| C | Copy slide link |
+| ? / H | Help |
+
+## 🚢 Deploy (Vercel)
+
+- Framework: Vite, Build: `npm run build`, Output: `dist`
+- `vercel.json` sudah set `cleanUrls`, cache 1 tahun untuk `/assets/*`, SPA `rewrites` ke `index.html`
+- Env: tidak butuh - semua client-side
+
+## 📝 Lisensi
+
+MIT - silakan fork untuk presentasi magang lain.
