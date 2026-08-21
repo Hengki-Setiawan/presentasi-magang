@@ -118,14 +118,22 @@ export function SlideCover() {
       <motion.div variants={item} className="mb-6 flex items-center gap-5 md:mb-8 md:gap-6">
         <motion.img
           src="/assets/logo-afila.png"
-          alt="Logo Afila"
+          alt="Logo Afila Media Karya"
+          width={96}
+          height={96}
+          fetchPriority="high"
+          decoding="async"
           className="h-16 w-16 rounded-3xl bg-white object-contain p-2 card-glow md:h-24 md:w-24"
           whileHover={{ scale: 1.08, rotate: -3 }}
         />
         <motion.div variants={item} className="h-10 w-px bg-[#35459c]/20 md:h-12" />
         <motion.img
           src="/assets/logo-unm.png"
-          alt="Logo UNM"
+          alt="Logo Universitas Negeri Makassar"
+          width={96}
+          height={96}
+          loading="lazy"
+          decoding="async"
           className="h-16 w-16 rounded-full bg-white object-contain p-1.5 card-glow md:h-24 md:w-24"
           whileHover={{ scale: 1.08, rotate: 3 }}
         />
@@ -563,8 +571,8 @@ export function SlidePenutup() {
       className="relative z-10 mx-auto flex min-h-[70vh] w-full max-w-4xl flex-col items-center justify-center px-6 py-6 text-center"
     >
       <motion.div variants={item} className="mb-6 flex items-center gap-5">
-        <img src="/assets/logo-afila.png" alt="Logo Afila" className="h-16 w-16 rounded-2xl bg-white object-contain p-2 card-glow" />
-        <img src="/assets/logo-unm.png" alt="Logo UNM" className="h-16 w-16 rounded-full bg-white object-contain p-1.5 card-glow" />
+        <img src="/assets/logo-afila.png" alt="Logo Afila Media Karya" width={64} height={64} loading="lazy" decoding="async" className="h-16 w-16 rounded-2xl bg-white object-contain p-2 card-glow" />
+        <img src="/assets/logo-unm.png" alt="Logo Universitas Negeri Makassar" width={64} height={64} loading="lazy" decoding="async" className="h-16 w-16 rounded-full bg-white object-contain p-1.5 card-glow" />
       </motion.div>
 
       <motion.h2 variants={item} className="font-display max-w-4xl text-4xl font-extrabold leading-tight text-[#2c3670] sm:text-5xl md:text-7xl">

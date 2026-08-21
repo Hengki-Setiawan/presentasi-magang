@@ -40,6 +40,9 @@ export function SpeakerNotesModal({
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Speaker notes: ${slideTitle}`}
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 15 }}

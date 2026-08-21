@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
+      - run: npm run typecheck
+      - run: npm run build:vite
+      - name: Check bundle size
+        run: |
+          du -sh dist
+          ls -lh dist/assets
+      - name: Lighthouse hints (no fail)
+        run: |
+          echo "HTML size $(wc -c < dist/index.html) bytes"
+          echo "JS gz estimate $(gzip -c dist/assets/*.js | wc -c) bytes"

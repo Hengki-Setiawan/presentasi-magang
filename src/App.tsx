@@ -20,6 +20,7 @@ import {
 import { Decorations, slideDeckData } from '@/slides'
 import { SpeakerNotesModal } from '@/components/SpeakerNotesModal'
 import { ShortcutsModal } from '@/components/ShortcutsModal'
+import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { soundFX } from '@/lib/soundFx'
 
 const slideVariants: Variants = {
@@ -349,6 +350,17 @@ export default function App() {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
+      {/* Skip link for a11y */}
+      <a
+        href="#main-slide"
+        className="sr-only left-4 top-4 z-[100] rounded-full bg-[#35459c] px-4 py-2 text-sm font-bold text-white focus:not-sr-only focus:fixed"
+      >
+        Lompat ke slide
+      </a>
+      {/* Aria-live for screen readers */}
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        Slide {index + 1} dari {slideDeckData.length}: {currentSlide.title}
+      </div>
       {/* Top progress bar */}
       <div className="absolute left-0 right-0 top-0 z-40 h-1.5 bg-[#35459c]/10">
         <motion.div
@@ -362,13 +374,26 @@ export default function App() {
       <header className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between border-b border-[#35459c]/10 bg-[#fffdf4]/90 px-4 py-3 shadow-xs backdrop-blur-md sm:px-6 sm:py-3.5">
         {/* Brand & Logo */}
         <div
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              jump(0)
+            }
+          }}
           className="flex cursor-pointer items-center gap-2.5 transition-transform hover:scale-105 sm:gap-3"
           onClick={() => jump(0)}
-          title="Ke Cover Slide"
+          title="Ke Cover Slide (Home)"
+          aria-label="Ke cover slide"
         >
           <img
             src="/assets/logo-afila.png"
-            alt="Afila"
+            alt="Afila Media Karya"
+            width={36}
+            height={36}
+            fetchPriority="high"
+            decoding="async"
             className="h-8 w-8 rounded-xl bg-white/90 object-contain p-1 shadow-sm sm:h-9 sm:w-9"
           />
           <div className="leading-tight">
@@ -499,7 +524,12 @@ export default function App() {
       </header>
 
       {/* Main Slide Presentation Area */}
-      <main className="fixed inset-0 overflow-x-hidden overflow-y-auto pb-24 pt-20">
+      <main
+        id="main-slide"
+        tabIndex={-1}
+        aria-label={`Slide ${index + 1} dari ${slideDeckData.length}: ${currentSlide.title}`}
+        className="fixed inset-0 overflow-x-hidden overflow-y-auto pb-24 pt-20 focus:outline-none"
+      >
         <AnimatePresence mode="wait" custom={direction} initial={false}>
           <motion.div
             key={index}
@@ -512,7 +542,9 @@ export default function App() {
             className="relative flex min-h-full w-full flex-col items-center justify-start py-4"
           >
             <Decorations variant={currentSlide.deco} />
-            <Current />
+            <ErrorBoundary fallbackTitle={`Gagal memuat slide ${index + 1}`}>
+              <Current />
+            </ErrorBoundary>
           </motion.div>
         </AnimatePresence>
       </main>

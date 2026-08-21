@@ -1,0 +1,23 @@
+{
+  "name": "Perjalanan Magang di Afila — Afila Media Karya × UNM",
+  "short_name": "Magang Afila",
+  "description": "Refleksi 13 minggu magang: otomasi n8n, Gunaku AI, Rumah Keripik.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffdf4",
+  "theme_color": "#35459c",
+  "lang": "id",
+  "icons": [
+    {
+      "src": "/assets/logo-afila.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/logo-unm.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

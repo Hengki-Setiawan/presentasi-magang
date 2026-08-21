@@ -11,9 +11,10 @@
     <meta name="color-scheme" content="light" />
     <link rel="canonical" href="https://presentasi-magang.vercel.app/" />
 
-    <!-- Favicon -->
+    <!-- Favicon & PWA -->
     <link rel="icon" type="image/png" href="/assets/logo-afila.png" />
     <link rel="apple-touch-icon" href="/assets/logo-afila.png" />
+    <link rel="manifest" href="/manifest.json" />
 
     <!-- Preconnect fonts - faster than @import in CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,6 +34,20 @@
     <meta name="twitter:title" content="Perjalanan Magang di Afila — Afila Media Karya × UNM" />
     <meta name="twitter:description" content="Refleksi 13 minggu magang: otomasi n8n, Gunaku AI, dan proyek nyata di industri." />
     <meta name="twitter:image" content="https://presentasi-magang.vercel.app/assets/logo-afila.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "PresentationDigitalDocument",
+        "name": "Perjalanan Magang di Afila — Afila Media Karya × UNM",
+        "description": "Refleksi 13 minggu magang: otomasi n8n, Gunaku AI, Rumah Keripik, dan pembelajaran industri.",
+        "author": { "@type": "Person", "name": "Mahasiswa Magang Afila × UNM" },
+        "publisher": { "@type": "Organization", "name": "Afila Media Karya", "logo": "https://presentasi-magang.vercel.app/assets/logo-afila.png" },
+        "educationalOrganization": { "@type": "CollegeOrUniversity", "name": "Universitas Negeri Makassar" },
+        "url": "https://presentasi-magang.vercel.app/",
+        "inLanguage": "id-ID",
+        "datePublished": "2026-08-21"
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
