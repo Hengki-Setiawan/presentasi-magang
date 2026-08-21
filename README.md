@@ -1,6 +1,6 @@
 # Perjalanan Magang di Afila — Afila Media Karya × UNM
 
-Presentasi interaktif 13 minggu magang: otomasi **n8n**, **Gunaku AI**, **Rumah Keripik**, dan pembelajaran industri. Dibangun sebagai web app slide deck modern (bukan PowerPoint statis).
+Presentasi interaktif 3 bulan magang: otomasi **n8n**, **Gunaku AI**, **Rumah Keripik**, dan pembelajaran industri. Dibangun sebagai web app slide deck modern (bukan PowerPoint statis).
 
 🔗 **Live:** https://presentasi-magang.vercel.app  
 📂 **Repo:** https://github.com/Hengki-Setiawan/presentasi-magang
